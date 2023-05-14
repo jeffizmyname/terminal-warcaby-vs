@@ -12,30 +12,40 @@ void Warcaby::printScore() {
 }
 
 void Warcaby::printBoard() {
-    for (int i = 1; i <= 8; i++)
+    for (int i = 0; i <= 8; i++)
     {
-        for (int j = 1; j <= 8; j++)
+        for (int j = 0; j <= 8; j++)
         {
+            //numeracja
+            if (j == 0) {
+                std::cout << dye::white_on_grey(" " + board[i][0]+ " ");
+                continue;
+            }
+            if (i == 8) {
+                std::cout << dye::white_on_grey(board[8][j]);
+                continue;
+            }
+
             //niepodzielne
             if (j % 2 == 0 && i % 2 == 0)
             {
-                std::cout << dye::white_on_black(board[i - 1][j - 1]);
+                std::cout << dye::white_on_black(board[i][j]);
             }
 
             if (j % 2 != 0 && i % 2 == 0)
             {
-                std::cout << dye::black_on_white(board[i - 1][j - 1]);
+                std::cout << dye::black_on_white(board[i][j]);
             }
 
             //podzielne               
             if (j % 2 != 0 && i % 2 != 0)
             {
-                std::cout << dye::white_on_black(board[i - 1][j - 1]);
+                std::cout << dye::white_on_black(board[i][j]);
             }
 
             if (j % 2 == 0 && i % 2 != 0)
             {
-                std::cout << dye::black_on_white(board[i - 1][j - 1]);
+                std::cout << dye::black_on_white(board[i][j]);
             }
         }
         std::cout << "\n";
